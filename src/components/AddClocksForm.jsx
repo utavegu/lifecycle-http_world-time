@@ -27,10 +27,16 @@ export default class AddClocksForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input onChange={this.handleChange} value={this.state.city} type="text" id="city" name="city" required />
-        <input onChange={this.handleChange} value={this.state.utc} type="text" id="utc" name="utc" required />
-        <button type="submit">Добавить</button>
+      <form className="add-clock-form" onSubmit={this.handleSubmit}>
+        <p className="add-clock-form__item">
+          <label htmlFor="city">Название</label>
+          <input onChange={this.handleChange} value={this.state.city} type="text" id="city" name="city" required />
+        </p>
+        <p className="add-clock-form__item">
+          <label htmlFor="utc">Временная зона</label>
+          <input onChange={this.handleChange} value={this.state.utc} type="text" id="utc" name="utc" pattern="(\+?(1[0-2]|\d))|(^\+\d)|(-?(1[0-2]|\d))" required />
+        </p>
+        <button className="add-clock-form__button" type="submit">Добавить</button>
       </form>
     )
   }
