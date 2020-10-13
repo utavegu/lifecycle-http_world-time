@@ -12,12 +12,11 @@ export default class Clock extends Component {
     }),
   };
 
-  state = {time: this.displayTime(this.utc)};
-
   constructor(props) {
     super(props);
-    this.utc = props.utc;
-    this.city = props.city;
+    this.state = {
+      time: this.displayTime(props.utc),
+    };
   }
 
   displayTime(utc) {
@@ -29,21 +28,21 @@ export default class Clock extends Component {
   }
 
   tick() {
-    this.setState({time: this.displayTime(this.utc)});
+    this.setState({time: this.displayTime(this.props.utc)});
   }
 
   componentDidMount() {
-    this.setClock = setInterval(() => this.tick(), 1000);
+    this.intervalId = setInterval(() => this.tick(), 1000);
   }
 
   componentWillUnmount() {
-    clearInterval(this.setClock);
+    clearInterval(this.intervalId);
   }
 
   render() {
     return (
       <div className="clock">
-        <div className="clock__city-name">{this.city}</div>
+        <div className="clock__city-name">{this.props.city}</div>
         <div className="clock__time">{this.state.time}</div>
       </div>
     );

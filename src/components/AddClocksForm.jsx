@@ -10,11 +10,6 @@ export default class AddClocksForm extends Component {
     city: '',
     utc: '',
   };
-
-  constructor(props) {
-    super(props);
-    this.handleAdd = props.onAdd;
-  }
   
   handleChange = ({target}) => {
     this.setState(prevForm => ({...prevForm, [target.name]: target.value}));
@@ -22,7 +17,7 @@ export default class AddClocksForm extends Component {
 
   handleSubmit = evt => {
     evt.preventDefault();
-    this.handleAdd(this.state);
+    this.props.onAdd(this.state);
   }
 
   render() {
