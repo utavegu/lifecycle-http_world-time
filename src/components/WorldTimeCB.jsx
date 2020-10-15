@@ -17,12 +17,16 @@ export default class WorldTimeCB extends Component {
   };
 
   handleAdd = (data) => {
-    this.setState(prevState => [...prevState.clocks, new ClockModel(data.city, data.utc)])
-  }
+    this.setState(prevState => ({
+      clocks:[...prevState.clocks, new ClockModel(data.city, data.utc)]
+    }));
+  };
 
   handleRemove = id => {
-    this.setState(prevState => prevState.clocks.filter((currentItem, currentId) => currentId !== id));
-  }
+    this.setState(prevState => ({
+      clocks: prevState.clocks.filter((currentItem, currentId) => currentId !== id)
+    }));
+  };
 
   render() {
     return (

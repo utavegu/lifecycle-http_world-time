@@ -1,5 +1,5 @@
 import React from 'react';
-// import WorldTime from './components/WorldTime';
+// import WorldTimeFunc from './components/WorldTimeFunc';
 import WorldTimeCB from './components/WorldTimeCB';
 import './App.css';
 
